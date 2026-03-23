@@ -1,0 +1,76 @@
+{
+    "portfolio": {
+        "aside": {
+            "t1": "Bachiller en Ingeniería Informática",
+            "t2": "Front-End Developer con habilidades Back-End  | React.js, Next.js & IA Especialista"
+        },
+        "aboutMe": {
+            "t1": "Descripción profesional",
+            "t2": "Desarrollador Front-End con más de 6 años de experiencia en desarrollo de software, análisis de datos y soporte de sistemas. Especializado en tecnologías modernas como React.js, Next.js, TypeScript, .NET y PostgreSQL. Experiencia en desarrollo Full-Stack, integración de IA, y gestión de proyectos desde la concepción hasta el despliegue. Capacidad demostrada para liderar proyectos innovadores, optimizar procesos y colaborar en equipos multidisciplinarios."
+        },
+        "skills":{
+            "t1": "Habilidades Técnicas",
+            "t2": "Herramientas & Otros"
+        },
+        "experience": {
+            "c1date1": "2025 - Presente",
+            "c1date2": "Kienez – Red Social con IA",
+            "c1title": "Fundador y desarrollador de Kienez",
+            "c1t1": "Lideré el desarrollo de una red social que utiliza IA para analizar publicaciones y generar perfiles de candidatos electorales.",
+            "c1t2": "Implementé la plataforma con Next.js, TypeScript, PostgreSQL (Google Cloud SQL) y Vercel, asegurando alta escalabilidad y rendimiento.",
+            "c1btn1": "Ver Plataforma",
+            "c1btn2": "Video - Presentación",
+
+            "c2date1": "Sep - Oct 2025",
+            "c2date2": "Proyecto SlohtGeek",
+            "c2title": "Desarrollador Freelance",
+            "c2t1": "Desarrollé un sitio web full stack responsivo utilizando Next.js y TypeScript.",
+            "c2t2": "Integré y personalicé el CMS Strapi para la gestión de contenidos.",
+            "c2btn1": "Ver Daniel Construye",
+
+            "c3date1": "Feb - Jun 2025",
+            "c3date2": "Práctica Profesional en el MOPT",
+            "c3title": "Analista de Datos y Programador .NET",
+            "c3t1": "Desarrollé reportes automatizados con SQL Server Reporting Services (SSRS).",
+            "c3t2": "Creé páginas de consulta con reportes parametrizados para optimizar el acceso a la información.",
+            "c3t3": "Colaboré en la modernización del Sistema de Registro Patrimonial (SIRPA), mejorando su eficiencia y usabilidad.",
+
+            "c4date1": "Sep 2018 - Oct 2025",
+            "c4date2": "Train-In Formación Virtual",
+            "c4title": "Programador Multimedia",
+            "c4t1": "Desarrollé sitios web responsivos utilizando HTML, CSS y JavaScript, mejorando la experiencia de usuario en plataformas educativas.",
+            "c4t2": "Brindé soporte técnico y atención al cliente para entornos Moodle, resolviendo incidencias y optimizando procesos.",
+            "c4t3": "Gestioné bases de datos SQL y colaboré en el desarrollo de contenidos eLearning con Storyline 360 y Adapt Learning / Adapt Framework..",
+            "c4t4": "Participé en el desarrollo de un simulador de servicio al cliente con GameMaker, utilizado en capacitaciones internas.",
+            "c4t5": "Contribuí al desarrollo y mantenimiento de los sitios web corporativos.",
+            "c4btn1": "Ver Train-In",
+            "c4btn2": "Ver Train-In Academy"
+        }, 
+        "education": {
+            "subtitle": "Carrera acreditada con sello de calidad y excelencia académica.",
+            "title": "Educación",
+            "t1a": "Bachillerato en Ingeniería Informática",
+            "t1b": "Universidad Estatal a Distancia (UNED) | Jul 2019 – Jul 2025",
+            "t2a": "Diplomado en Informática",
+            "t2b": "Universidad Estatal a Distancia (UNED) | Jun 2017 – Jun 2019",
+            "t3a": "Inglés UNED-CONARE – Nivel B1+ (Intermedio-Alto)",
+            "t3b": "Universidad Estatal a Distancia | Sep 2018 – Sep 2020",
+            "t4a": "Curso de Creación de Videojuegos",
+            "t4b": "Universidad Estatal a Distancia | Jun 2018 – Jul 2021"
+        },
+        "contact": {
+            "subtitle": "Pongámonos en contacto",
+            "title": "Información",
+            "t1": "La Cruz, Guanacaste, Costa Rica",
+            "t2": "guimachu@gmail.com",
+            "t3": "(+506) 86502638",
+            "t4a": "LinkedIn",
+            "t4b": "Portfolio",
+            "t4c": "GitHub"
+        },
+        "footer": {
+            "t1": "© 2026 Guillermo Castrillo Toledo. Todos los derechos reservados.",
+            "t2": "Diseñado en Figma y desarrollado en VS Code. Construido con Next.js, Motion.dev y Tailwind CSS, desplegado con Vercel."
+        }
+    }
+}
