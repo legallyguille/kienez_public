@@ -6,43 +6,6 @@ import { generateObject } from "ai"
 import { z } from "zod"
 import { analyzeTrollFarmActivity } from "@/lib/analyzeTrollFarm"
 
-// const CrowdSummarySchema = z.object({
-//   overview: z.string().max(400), // 2–3 oraciones
-//   //praise: z.array(z.string()).max(3), // bullets cortos
-//   praise: z.array(z.string()), // bullets cortos
-// //  criticism: z.array(z.string()).max(3),
-//   criticism: z.array(z.string()),
-//   //repeatedQuestions: z.array(z.string()).max(3),
-//   repeatedQuestions: z.array(z.string()),
-//   //sampleQuotes: z.array(z.string()).max(3), // citas textuales breves
-//   sampleQuotes: z.array(z.string()), // citas textuales breves
-//   // misinformationFlags: z
-//   //   .array(
-//   //     z.object({
-//   //       claim: z.string().max(200),
-//   //       note: z.string().max(160), // por qué es dudosa (basado en veracity baja del análisis)
-//   //     }),
-//   //   )
-//   //   .max(3),
-//   misinformationFlags: z
-//     .array(
-//       z.object({
-//         claim: z.string().max(200),
-//         note: z.string().max(160), // por qué es dudosa (basado en veracity baja del análisis)
-//       }),
-//     ),
-//   //ideology: z.string().max(100),
-//   ideology: z.array(
-//     z.object({
-//       label: z.string().max(50),
-//       confidence: z.string().max(50),
-//       // characteristic: z.array(z.string()).max(3),
-//       // supportingEvidence: z.array(z.string()).max(3),
-//       characteristic: z.array(z.string()),
-//       supportingEvidence: z.array(z.string()),
-//     }),
-//   )
-// })
 const CrowdSummarySchema = z.object({
   overview: z.string().max(800),
   praise: z.array(z.string()).max(10),
@@ -208,57 +171,7 @@ export async function POST(req: NextRequest) {
       model: openai("gpt-4o"),
       schema: CrowdSummarySchema,
       prompt: `
-      Eres un analista político que resume conversaciones públicas sobre un candidato.
-
-      Tu tarea es generar un resumen diario acumulativo que:
-      - refleje la conversación actual,
-      - conserve los patrones del día anterior,
-      - y describa la evolución de la percepción ciudadana.
-
-      IMPORTANTE:
-      - Solo incluye las 5 menciones más relevantes en cada lista ("praise", "criticism", "sampleQuotes" y "misinformationFlags").
-      - Si hay más de 5, elige las que mejor representen los temas predominantes del día o cambios respecto al día anterior.
-      - Evita repetir información idéntica de días anteriores.
-
-      ${previousContext}
-      ${condensedTrends}
-
-      ### Comentarios del día (posts y respuestas):
-      ${discussionContext}
-
-      Instrucciones:
-      - "overview": resume el tono general del día en 3–5 oraciones, indicando continuidad o cambio respecto al día anterior.
-      - "praise"/"criticism": selecciona hasta 5 puntos más representativos (nuevos o persistentes).
-      - "repeatedQuestions": incluye hasta 5 dudas o demandas destacadas.
-      - "sampleQuotes": elige hasta 5 frases representativas del tono público.
-      - "misinformationFlags": conserva o agrega hasta 5 rumores o afirmaciones dudosas.
-      - "ideology": resume percepciones ideológicas con coherencia o cambios observados.
-
-      INTERPRETACIÓN DE VALIDACIÓN SOCIAL:
-
-      - Si un contenido clasificado como "RUMOR" u "OPINIÓN" presenta altos valores de "Confirmo" o "Coincido",
-        interpreta que la audiencia le está otorgando mayor credibilidad o relevancia,
-        sin afirmar que sea un hecho verificable.
-
-      - Si un contenido clasificado como "HECHO" presenta un nivel alto de "Desacuerdo",
-        interpreta que su credibilidad pública está siendo cuestionada o erosionada.
-
-      - No cambies la etiqueta original del contenido, pero describe claramente
-        la PERCEPCIÓN PÚBLICA EMERGENTE.
-
-      - Prioriza en el resumen los casos donde las reacciones sociales contradicen
-        o refuerzan fuertemente la clasificación original.
-
-      REGLAS IMPORTANTES:
-      - Analiza cada comentario SIEMPRE en relación con su post original.
-      - No interpretes comentarios como independientes si responden al mismo post.
-      - Identifica temas, elogios o críticas considerando el contexto del post.
-      - Si varios comentarios responden al mismo post, interpreta el sentimiento colectivo.
-      - Da mayor peso a conversaciones con múltiples respuestas.
-      - Da mayor peso a hilos con mayor volumen total de reacciones.
-      - Un rumor u opinión con alta validación social puede ser más relevante que un hecho con baja interacción.
-      - Un hecho fuertemente cuestionado debe destacarse aunque no sea nuevo.
-
+      Analista de conversaciones políticas
     `,
     })
       // ### Comentarios del día:
