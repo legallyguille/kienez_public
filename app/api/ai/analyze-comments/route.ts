@@ -61,14 +61,6 @@ const CrowdSummarySchema = z.object({
       }),
     )
     .max(3),
-  // ideology: z.array(
-  //   z.object({
-  //     label: z.string().max(50),
-  //     confidence: z.string().max(50),
-  //     characteristic: z.array(z.string()).max(3),
-  //     supportingEvidence: z.array(z.string()).max(3),
-  //   }),
-  // )
 })
 
 export async function POST(request: NextRequest) {
@@ -90,50 +82,14 @@ export async function POST(request: NextRequest) {
     if (!content || !postId) {
       return NextResponse.json({ error: "Content and postId are required" }, { status: 400 })
     }
-
-    // const pool = await getPool()
-
-    // const {rows: previousRows} = await pool.query(
-    //   `SELECT candidate_id, analysis_date, daily_sentiment, daily_content_count, daily_topic_distribution, daily_attribute_scores, daily_veracity_average, created_at
-    //   FROM daily_analysis_metrics WHERE candidate_id = $1
-    //   ORDER BY analysis_date DESC LIMIT 1`,
-    //   [candidateId],
-    // )
-
-    // const previousMetrics = previousRows[0] || null
-
+    
     // Generar análisis usando GPT-4o
     const { object: analysis } = await generateObject({
       //model: groq("mixtral-8x7b-32768"),
       model: openai("gpt-4o"),
       schema: AnalysisSchema,
       prompt: `
-        Analiza el siguiente comentario político en español y proporciona:
-
-        COMENTARIO: "${content}"
-
-        Debes analizar:
-
-        1. SENTIMIENTO (-1 a 1, donde -1 es muy negativo, 0 neutral, 1 muy positivo) toma en cuenta el número de reacciones de los usuarios que son confirmaciones: ${confirms}, si estan de acuerdo: ${agrees}, o si estan en desacuerdo: ${disagrees}
-        2. TEMAS POLÍTICOS (0 a 1 para cada tema):
-           - salud: ¿Habla sobre salud pública, hospitales, medicina, seguro social, seguridad social?
-           - educacion: ¿Menciona escuelas, universidades, educación, formación docente, capacitación, formación técnica, formación profesional, INA, Fondo Especial para la Educación Superior (FEES), presupuesto para la educación?
-           - economia: ¿Discute empleo, precios, economía, inflación, salarios, deuda pública, impuestos?
-           - seguridad: ¿Habla de crimen, policía, seguridad, justicia, tribunales, cárceles, prisiones?
-           - medio_ambiente: ¿Habla de ambiente, clima, contaminación, cambio climático, parques nacionales, reciclaje, conservación?
-           - tecnologia: ¿Menciona tecnología, innovación, digitalización, internet, telecomunicaciones, avances tecnológicos?
-
-        3. VERACIDAD (0-100): Probabilidad de que las afirmaciones sean verdaderas. Toma en cuenta si es hecho, opinión o rumor para ajustar tu veracidad estimada: es_hecho: ${es_hecho}, es_opinion: ${es_opinion}, es_rumor: ${es_rumor}. Además, si el comentario tiene muchas confirmaciones: ${confirms} y acuerdos: ${agrees}, aumenta la veracidad estimada, en relación a los desacuerdos ${disagrees}.
-        4. ATRIBUTOS DEL CANDIDATO (0 a 1):
-           - corrupto: ¿Sugiere corrupción?
-           - transparente: ¿Sugiere transparencia?
-           - experimentado: ¿Sugiere experiencia?
-           - confiable: ¿Sugiere confiabilidad?
-           - populista: ¿Sugiere populismo?
-
-        5. CONFIANZA (0-1): Tu confianza en este análisis
-
-        Responde solo con el JSON solicitado, sin explicaciones adicionales.
+        Eres un analista de sentimiento de comentarios
       `,
     })
 
