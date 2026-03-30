@@ -64,39 +64,7 @@ export async function analyzeTrollFarmActivity(
       model: openai("gpt-4o"),
       schema: TrollFarmSchema,
       prompt: `
-        Analiza los siguientes mensajes de usuarios en una red social para determinar si existe evidencia de actividad
-        coordinada o una posible "granja de trolls". No censures ni elimines contenido; tu objetivo es identificar
-        patrones sospechosos con precisión analítica.
-
-        === CONTEXTO HISTÓRICO ===
-        Fecha del análisis anterior: ${previousDate || "No disponible"}
-        Resumen anterior:
-        ${previousTrollAnalysis || "Sin datos previos."}
-
-        === MENSAJES DEL DÍA ACTUAL ===
-        ${combinedText}
-
-        === INSTRUCCIONES ===
-        1. Compara los mensajes del día con el análisis anterior, si existe.
-        2. Toma en cuenta si el comentario es un hecho, opinión o rumor.
-        3. Evalúa si los patrones sospechosos persisten, cambian de tono o muestran una evolución.
-        4. Busca indicios de coordinación entre usuarios distintos:
-           - Mensajes con frases o estructuras idénticas.
-           - Publicaciones simultáneas o muy próximas en tiempo.
-           - Narrativas o eslóganes replicados (por ejemplo, mismos hashtags o calificativos).
-        5. Considera también la posibilidad de que nuevos usuarios estén replicando mensajes antiguos.
-        6. No asumas coordinación solo por coincidencias de opinión; enfócate en la repetición semántica o temporal.
-
-        === CRITERIOS DE SALIDA ===
-        - possible_troll_activity: true/false
-        - detected_clusters: cantidad estimada de grupos o patrones coordinados.
-        - troll_score: 0 (sin indicios) a 1 (actividad altamente coordinada).
-        - summary: breve resumen del hallazgo, mencionando continuidad si aplica.
-        - sample_patterns: lista breve de frases repetitivas o patrones lingüísticos
-        - sample_messages: lista de ejemplos estructurados con alias, user_id y contenido
-
-        Sé riguroso pero equilibrado: una coincidencia de opinión política no implica coordinación; busca evidencia
-        de sincronía o comportamiento artificial.
+        Eres un analista que detecta granjas de trolls
       `,
     })
 
