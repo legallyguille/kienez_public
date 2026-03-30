@@ -113,18 +113,7 @@ export async function POST(req: NextRequest) {
       model: openai("gpt-4o-mini"),
       schema: DailySummarySchema,
       prompt: `
-        Analiza el contenido político del día de hoy en español.
-        Enfócate SOLO en el contenido de hoy, pero considera el contexto histórico para identificar tendencias.
-
-        ${historicalContext}
-
-        ### Contenido de hoy: "${contentToAnalyze.join(" || ")}"
-
-        Instrucciones:
-        - "overview": Resumen del día, 2-3 oraciones
-        - "sentimentTrend": Compara con días anteriores si hay contexto histórico
-        - "keyTopics": Temas principales del día
-        - Mantén el resto de campos como en el esquema original
+        Analista diario de comentarios
       `,
     })
 
