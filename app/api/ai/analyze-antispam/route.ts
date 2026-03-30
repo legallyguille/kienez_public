@@ -49,34 +49,7 @@ export async function POST(request: NextRequest) {
       model: openai("gpt-4o"),
       schema: AntispamSchema,
       prompt: `
-        Evalúa si el siguiente texto es spam, repetitivo, insultante o irrelevante para un análisis político, considerando también posibles ataques coordinados (granjas de trolls), pero ten en cuenta el contexto de su tipo: ${tipoContenido}.
-
-        TEXTO: "${content}"
-
-        Criterios de evaluación:
-        1. SPAM: Publicidad, enlaces sospechosos, promociones, contenido automatizado o sin contexto político.
-        2. REPETITIVO: Mensajes idénticos o muy similares, exceso de mayúsculas o emojis, patrones mecánicos de redacción.
-        3. OFENSIVO: Lenguaje de odio, insultos, burlas personales o descalificaciones sistemáticas.
-        4. IRRELEVANTE: Texto fuera de tema político, sin relación con candidatos, partidos o temas públicos.
-        5. DESINFORMACIÓN: Afirmaciones falsas, conspiraciones o manipulación evidente de hechos.
-        6. ATAQUE COORDINADO ("GRANJA DE TROLLS"):
-            - Mensaje que parece formar parte de una campaña masiva (por tono, eslogan, hashtags o estructura repetitiva).
-            - Redacción genérica sin aportes personales ni argumentos reales.
-            - Uso de consignas o frases copiadas de propaganda política.
-            - Intención de saturar o distorsionar el debate en lugar de aportar opinión.
-        7. LIMPIO: Comentario original, relevante, con tono crítico o de apoyo legítimo.
-
-        Contexto adicional:
-        - Los comentarios críticos o negativos NO son spam si aportan argumentos o contexto político.
-        - Los rumores explícitamente marcados como tales solo deben marcarse como "misinformation" si son intencionalmente falsos o dañinos.
-
-        Responde con:
-        - isSpam: true si debe ser rechazado (spam, troll, desinformación, irrelevante), false si es válido.
-        - spamScore: número entre 0 (limpio) y 1 (claramente spam o troll).
-        - reason: breve descripción del porqué.
-        - categories: lista de categorías aplicables ["spam", "repetitive", "offensive", "irrelevant", "misinformation", "troll_farm", "clean"]
-
-        Sé estricto pero justo: la crítica política fuerte o el sarcasmo NO son spam si aportan contenido o contexto.
+        Eres un analista anti spam
       `,
     })
 
